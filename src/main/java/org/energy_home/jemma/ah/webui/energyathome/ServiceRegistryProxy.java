@@ -15,7 +15,6 @@
  */
 package org.energy_home.jemma.ah.webui.energyathome;
 
-
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -38,18 +37,18 @@ public class ServiceRegistryProxy {
 		}
 	}
 
-	public ArrayList find (String clazz) throws Exception {
+	public ArrayList find(String clazz) throws Exception {
 		return this.jSONServiceTracker.getServiceReferences(clazz);
 	}
 
-	public String bind (Map props) throws Exception {
+	public String bind(Map props) throws Exception {
 		return this.jSONServiceTracker.findService(props);
 	}
-	
-	public void unbind (String serviceId) throws Exception {
+
+	public void unbind(String serviceId) throws Exception {
 		this.jSONServiceTracker.unbind(serviceId);
 	}
-	
+
 	public void close() {
 		this.jSONServiceTracker.close();
 	}

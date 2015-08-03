@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 public class WebApplication {
 	private String rootUrl = "/";
 	private HttpService httpService = null;
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(WebApplication.class);
 
 	Vector resources = new Vector();
@@ -70,7 +70,7 @@ public class WebApplication {
 				try {
 					httpService.registerResources(this.toAlias(this.rootUrl + r.getAlias()), r.getPath(), this.getHttpContext());
 				} catch (Throwable e) {
-					LOG.error("Error registering resources: {}",e);
+					LOG.error("Error registering resources: {}", e);
 					continue;
 				}
 			}
@@ -80,9 +80,9 @@ public class WebApplication {
 				try {
 					httpService.registerServlet(this.toAlias(this.rootUrl + sr.getAlias()), sr.getServlet(), null, this.getHttpContext());
 				} catch (Exception e) {
-					LOG.error("Error registering servlet: {}",e);
+					LOG.error("Error registering servlet: {}", e);
 					continue;
-				} 
+				}
 			}
 		}
 	}
@@ -92,7 +92,7 @@ public class WebApplication {
 			String a = alias.substring(0, alias.length() - 1);
 			return a;
 		}
-			
+
 		return alias;
 	}
 
@@ -125,8 +125,9 @@ public class WebApplication {
 		}
 		return null;
 	}
+
 	public void setHttpContext(HttpContext httpContext) {
-			this.httpContext = httpContext;
-	
+		this.httpContext = httpContext;
+
 	}
 }

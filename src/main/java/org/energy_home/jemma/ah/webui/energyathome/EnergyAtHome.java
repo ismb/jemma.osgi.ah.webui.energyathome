@@ -172,16 +172,15 @@ public class EnergyAtHome extends WebApplication implements HttpImplementor, Htt
 			}
 			return false;
 		}
-		
+
 		String queryString = request.getRequestURI();
-		
+
 		if (queryString.equals(applicationWebAlias + "/conf") || (queryString.equals(applicationWebAlias + "/conf/"))) {
 			response.sendRedirect(applicationWebAlias + "/conf/index.html");
 			return true;
-		}
-		else if (queryString.equals(applicationWebAlias) || (queryString.equals(applicationWebAlias + "/"))) {
+		} else if (queryString.equals(applicationWebAlias) || (queryString.equals(applicationWebAlias + "/"))) {
 			response.sendRedirect(applicationWebAlias + "/index.html");
-			return true;			
+			return true;
 		}
 
 		if (enableSecurity) {
@@ -242,7 +241,8 @@ public class EnergyAtHome extends WebApplication implements HttpImplementor, Htt
 						if (queryString.equals(applicationWebAlias + "/conf/login.html")) {
 							return true;
 						} else {
-//							session.putValue("login.target", HttpUtils.getRequestURL(request).toString());
+							// session.putValue("login.target",
+							// HttpUtils.getRequestURL(request).toString());
 							session.putValue("login.target", applicationWebAlias + "/conf/index.html");
 							Object done = session.getValue("logon.isDone");
 							if (done == null) {
@@ -264,11 +264,12 @@ public class EnergyAtHome extends WebApplication implements HttpImplementor, Htt
 			response.setHeader("Cache-Control", "public, max-age=10000");
 		}
 
-		/*if (request.getRequestURI().endsWith(".js")) {
-			response.setHeader("Pragma", "no-cache");
-			response.setHeader("Cache-Control", "no-store");
-			response.setHeader("Cache-Control", "public, max-age=0");
-		}*/
+		/*
+		 * if (request.getRequestURI().endsWith(".js")) {
+		 * response.setHeader("Pragma", "no-cache");
+		 * response.setHeader("Cache-Control", "no-store");
+		 * response.setHeader("Cache-Control", "public, max-age=0"); }
+		 */
 
 		// response.addHeader(HttpServletResponse, arg1)
 
@@ -276,8 +277,7 @@ public class EnergyAtHome extends WebApplication implements HttpImplementor, Htt
 	}
 
 	private boolean redirectToLoginPage(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String redirect = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-				+ applicationWebAlias + "/conf/login.html";
+		String redirect = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + applicationWebAlias + "/conf/login.html";
 		response.sendRedirect(redirect);
 		return true;
 	}
